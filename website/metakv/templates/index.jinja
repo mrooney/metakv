@@ -1,5 +1,11 @@
 {% extends "base.jinja" %}
-{% block above_container %}<h1>Welcome!</h1>{% endblock %}
 {% block content %}
-    Here's the content.
+<div class="starter-template">
+    <h1>metakv</h1>
+    {% if user.is_authenticated() %}
+        <p class="lead">welcome, {{ request.user.email }}. API docs coming soon.</p>
+    {% else %}
+        <p class="lead">to get started using metakv, log in with Github above.</p>
+    {% endif %}
+</div>
 {% endblock %}

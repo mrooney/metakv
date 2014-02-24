@@ -1,6 +1,7 @@
 from coffin.shortcuts import render_to_response
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import logout as _logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
@@ -20,6 +21,10 @@ def json_response(func):
     def decorated(*args, **kwargs):
         return HttpResponse(cjson.encode(func(*args, **kwargs)), mimetype="application/json")
     return decorated
+
+def logout(request):
+    _logout(request)
+    return redirect('index')
 
 def index(request):
     return r2r("index.jinja", request)

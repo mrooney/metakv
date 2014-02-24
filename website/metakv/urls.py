@@ -7,11 +7,13 @@ admin.autodiscover()
 
 app_urls = (
     url(r'^%s/'%name, 'metakv.views.%s'%name, name=name) for name in [
+        'logout',
     ]
 )
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('social_auth.urls')),
     url(r'^$', 'metakv.views.index', name='index'),
     *app_urls
 )

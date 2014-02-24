@@ -21,7 +21,7 @@
     <body class="{% block body_class %}{% endblock %}">
         {% include "header.jinja" %}
 
-        <div class="container" id="main" role="main">
+        <div class="container">
             <div class="message-container">
                 {% for message in messages %}
                     <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
@@ -31,9 +31,7 @@
                 {% endfor %}
             </div>
             {% block above_container %}{% endblock %}
-            <div class="container well">
                 {% block content %}{% endblock %}
-            </div>
             {% block below_container %}{% endblock %}
         </div>
 

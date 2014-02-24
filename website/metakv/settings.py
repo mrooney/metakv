@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'django_forms_bootstrap',
     'sorl.thumbnail',
     'metakv',
+    'social_auth',
 )
 if not (DEBUG or TESTING):
     INSTALLED_APPS += (
@@ -145,7 +146,18 @@ if not (DEBUG or TESTING):
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-SENTRY_DSN_PATH = os.path.join(WEBSITE_DIR, 'sentry.dsn')
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.contrib.github.GithubBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+LOGIN_URL = '/login-form/'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_ERROR_URL = '/login-error/'
+GITHUB_APP_ID = '157af5c9f7c7e891ba36'
+GITHUB_API_SECRET = open(os.path.join(WEBSITE_DIR, 'github.secret')).read().strip()
+GITHUB_EXTENDED_PERMISSIONS = ['user:email']
+
+SENTRY_DSN_PATH = os.path.join(WEBSITE_DIR, 'sentry.secret')
 if not os.path.exists(SENTRY_DSN_PATH):
     print "!!! WARNING SENTRY_DSN_PATH does not exist; no Sentry logging can occur !!!"
 else:
@@ -206,18 +218,14 @@ else:
     EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
     EMAIL_PORT = 465
     EMAIL_USE_TLS = True
-    AWS_CREDENTIALS_PATH = os.path.join(WEBSITE_DIR, 'aws.credentials')
+    AWS_CREDENTIALS_PATH = os.path.join(WEBSITE_DIR, 'aws.secret')
     if os.path.exists(AWS_CREDENTIALS_PATH):
         EMAIL_HOST_USER, EMAIL_HOST_PASSWORD = open(AWS_CREDENTIALS_PATH).read().splitlines()
-
-
-AUTH_USER_MODEL = "metakv.CustomUser"
-LOGIN_URL = "login"
 
 WEBSITE_NAME = "metakv"
 from settings_deploy import SERVICES
 if DEBUG:
     WEBSITE_URL = "http://localhost:{}".format(SERVICES['nginx']['port'])
 else:
-    WEBSITE_URL = "http://example.com"
+    WEBSITE_URL = "http://www.metakv.com"
 
