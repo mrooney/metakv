@@ -1,18 +1,8 @@
-# Metakv Django Project #
+metakv
+======
 
-# Pre-requisites:
-* python
-* pip
- * sudo easy_install pip
-* [optional] virtualenv
- * pip install virtualenv
+metakv is a key-value store which stores data in metakv. This both lacks meaning and accurately describes its implementation.
 
-# Installation:
-From the directory of the repository:
+metakv is not ACID-compliant; particularly, the durability of any data stored in metakv is undefined.
 
-1. [optional] virtualenv --no-site-packages env && source env/bin/activate
-1. pip install -r requirements.txt
-1. cd website
-1. ./deploy.py [starts/restarts application, performing any necessary bootstrapping]
-1. open http://localhost:[port]
-1. ./deploy.py stop
+metakv is a work-in-progress, and this README will shortly contain code and usage information.
