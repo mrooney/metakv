@@ -1,0 +1,26 @@
+aws.credentials
+
+env
+# OS
+.DS_Store
+
+# Python
+*.pyc
+*.pyo
+
+# Common IDEs
+*.swp
+.idea/
+.buildpath
+.project
+.settings
+atlassian-ide-plugin.xml
+
+# Project
+/website/public/static
+/website/public/media
+*.db
+nginx.conf
+settings_gunicorn.py
+uploads
+sentry.dsn

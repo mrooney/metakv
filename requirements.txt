@@ -1,0 +1,22 @@
+# base requirements:
+BeautifulSoup<4.0
+Coffin
+Pillow
+South
+bpython
+cssselect
+django
+django-forms-bootstrap
+django-nose
+django-smtp-ssl
+django_compressor
+gunicorn
+jinja2
+lxml
+pbdeploy
+psutil
+python-cjson
+python-memcached
+raven
+sorl-thumbnail
+# add your application-specific requirements here:

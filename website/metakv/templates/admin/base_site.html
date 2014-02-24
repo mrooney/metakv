@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Your site admin' %}{% endblock %}
+
+{% block branding %}
+<a href="/admin">
+    <h1 id="site-name">{% trans 'Your Administration' %}</h1>
+</a>
+{% endblock %}

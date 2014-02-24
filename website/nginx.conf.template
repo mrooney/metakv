@@ -1,0 +1,52 @@
+worker_processes 1;
+
+pid {project_dir}/run/nginx.pid;
+error_log {project_dir}/run/nginx.error.log;
+
+events {{
+    worker_connections 1024;
+}}
+
+http {{
+    client_body_temp_path {project_dir}/run/client_body;
+    proxy_temp_path {project_dir}/run/proxy_temp;
+    fastcgi_temp_path {project_dir}/run/fastcgi_temp;
+    uwsgi_temp_path {project_dir}/run/uwsgi_temp;
+    scgi_temp_path {project_dir}/run/scgi_temp;
+
+    include nginx.mime.types;
+    default_type application/octet-stream;
+    access_log {project_dir}/run/nginx.access.log;
+    sendfile on;
+
+    upstream gunicorn {{
+        server 127.0.0.1:{gunicorn_port} fail_timeout=0;
+    }}
+
+    server {{
+        listen {port} default_server;
+
+        location /favicon.ico {{
+            return 204;
+        }}
+
+        location /static/ {{
+            alias {project_dir}/public/static/;
+        }}
+
+        location /uploads/ {{
+            alias {project_dir}/metakv/uploads/;
+        }}
+
+        location / {{
+            proxy_pass_header Server;
+            proxy_set_header Host $http_host;
+            proxy_redirect off;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            proxy_set_header X-Scheme $scheme;
+            proxy_connect_timeout 60;
+            proxy_read_timeout 60;
+            proxy_pass http://gunicorn/;
+        }}
+    }}
+}}

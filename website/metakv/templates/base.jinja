@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="">
+        <title>{% block title %}TITLE{% endblock %}</title>
+        {% load compress %}
+        {% compress css %}
+            <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.1.1-dist/css/bootstrap.min.css" />
+            <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
+            <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+        {% endcompress %}
+        {# compress extra_css in a separate block so changes in local page CSS don't blow the entire cache, yet local pages don't have to send down the entire CSS each time #}
+        {% compress css %}
+            <style type="text/css">.logged-{{"out" if request.user.is_authenticated() else "in"}} { display:none !important; }</style>
+            {% block extra_css %}{% endblock %}
+        {% endcompress %}
+    </head>
+    <body class="{% block body_class %}{% endblock %}">
+        {% include "header.jinja" %}
+
+        <div class="container" id="main" role="main">
+            <div class="message-container">
+                {% for message in messages %}
+                    <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+                        <a class="close" data-dismiss="alert" href="#">&times;</a>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            {% block above_container %}{% endblock %}
+            <div class="container well">
+                {% block content %}{% endblock %}
+            </div>
+            {% block below_container %}{% endblock %}
+        </div>
+
+        {% compress js %}
+            <script src="/static/js/jquery-1.11.0.min.js"></script>
+            <script src="/static/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+            <script src="/static/js/javascript.js"></script>
+        {% endcompress %}
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>
