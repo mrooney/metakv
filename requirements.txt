@@ -21,3 +21,4 @@ raven
 sorl-thumbnail
 django-social-auth
 # add your application-specific requirements here:
+requests

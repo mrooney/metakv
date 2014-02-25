@@ -15,5 +15,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('social_auth.urls')),
     url(r'^$', 'metakv.views.index', name='index'),
+    url(r'^set/(.*)$', 'metakv.views.api_set', name='set'),
+    url(r'^get/(.*)$', 'metakv.views.api_get', name='get'),
     *app_urls
 )

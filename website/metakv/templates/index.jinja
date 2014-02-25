@@ -2,10 +2,21 @@
 {% block content %}
 <div class="starter-template">
     <h1>metakv</h1>
-    {% if user.is_authenticated() %}
-        <p class="lead">welcome, {{ request.user.email }}. API docs coming soon.</p>
+    {% if request.user.is_authenticated() %}
+        <p class="lead">Your account is raring to key-value.</p>
+        <p>Your API token is: {{access_token}}</p>
     {% else %}
         <p class="lead">to get started using metakv, log in with Github above.</p>
     {% endif %}
 </div>
+{% if request.user.is_authenticated() %}
+<div class="api">
+    <p>
+        <span class="label label-primary">SET</span> <code>curl -X POST -d '<b>:value</b>' http://www.metakv.com/set/<b>:key</b>?access_token={{access_token}}</code>
+    </p>
+    <p>
+        <span class="label label-primary">GET</span> <code>curl http://www.metakv.com/get/<b>:key</b>?access_token={{access_token}}</code>
+    </p>
+</div>
+{% endif %}
 {% endblock %}

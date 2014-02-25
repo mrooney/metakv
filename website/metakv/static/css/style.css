@@ -8,3 +8,8 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+.api {
+    width: 1000px;
+    margin: auto;
+}

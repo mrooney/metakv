@@ -155,7 +155,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/login-error/'
 GITHUB_APP_ID = '157af5c9f7c7e891ba36'
 GITHUB_API_SECRET = open(os.path.join(WEBSITE_DIR, 'github.secret')).read().strip()
-GITHUB_EXTENDED_PERMISSIONS = ['user:email']
+GITHUB_EXTENDED_PERMISSIONS = ['user:email', 'public_repo']
 
 SENTRY_DSN_PATH = os.path.join(WEBSITE_DIR, 'sentry.secret')
 if not os.path.exists(SENTRY_DSN_PATH):
