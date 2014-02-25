@@ -20,13 +20,13 @@ api
 once you [obtain an access token](http://www.metakv.com), you'll be able
 to:
 
-* **GET**: curl http://www.metakv.com/get/**:key**?access_token=:token
-* **SET**: curl -X POST -d '**:value**' http://www.metakv.com/set/**:key**?access_token=:token
+* **GET**: curl http://www.metakv.com/get/:key?access_token=:token
+* **SET**: curl -X POST -d '**:value**' http://www.metakv.com/set/:key?access_token=:token
 
 why?
 ====
 
-metakv was inspired by @chino, who first planted the idea of using
+metakv was inspired by [@chino](https://github.com/chino), who first planted the idea of using
 social data (tweets, facebook comments) outside of its original intent, and specifically as a place
 to dump and retrieve raw encoded data. I loved the idea of a project
 that could store its own data as metadata on the project itself. Hence,
