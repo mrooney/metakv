@@ -13,7 +13,15 @@ an API token via GitHub OAuth at http://www.metakv.com, which will then provide
 programmatic operations like GET and SET. Keys and values are base32
 encoded and stored in GitHub issues (filed by you via OAuth) as issue titles and bodies,
 respectively. Each user receives their own key space; issues are filed
-and filtered by their username.
+and filtered by their username. They look like this: https://github.com/mrooney/metakv/issues
+
+api
+===
+once you [obtain an access token](http://www.metakv.com), you'll be able
+to:
+
+* **GET**: curl http://www.metakv.com/get/**:key**?access_token=:token
+* **SET**: curl -X POST -d '**:value**' http://www.metakv.com/set/**:key**?access_token=:token
 
 why?
 ====
@@ -23,3 +31,9 @@ social data (tweets, facebook comments) outside of its original intent, and spec
 to dump and retrieve raw encoded data. I loved the idea of a project
 that could store its own data as metadata on the project itself. Hence,
 metakv was born.
+
+what's next?
+============
+maybe backends based on tweets to @metakv or comments on a metakv
+Facebook page. maybe more operations like INCR, or data types like sets.
+maybe nothing.
