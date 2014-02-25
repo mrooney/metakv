@@ -44,7 +44,7 @@ def api_set(request, key):
     key = base64.b32encode(key)
     value = base64.b32encode(request.body)
 
-    github_payload = {'labels': ['meta'], 'title': key, 'body': value}
+    github_payload = {'title': key, 'body': value}
     headers = {'Authorization': 'token {}'.format(access_token)}
     response = requests.post(
             'https://api.github.com/repos/mrooney/metakv/issues',
@@ -63,7 +63,7 @@ def api_get(request, key):
     else:
         raise Http404
 
-    url = 'https://api.github.com/search/issues?q={}+label:meta+author:{}+in:title&sort=created&order=desc'.format(key, author)
+    url = 'https://api.github.com/search/issues?q={}+author:{}+in:title&sort=created&order=desc'.format(key, author)
     response = requests.get(url)
     if response.status_code == 200:
         value = base64.b32decode(cjson.decode(response.text)['items'][0]['body'])
