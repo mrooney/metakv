@@ -8,14 +8,13 @@ metakv is not ACID-compliant; particularly, the durability of any data stored in
 how does it work?
 =================
 
-metakv uses GitHub issues on the metakv project itself as its data store / backend. You can obtain
-an API token via GitHub OAuth at http://www.metakv.com, which will then provide
-programmatic operations like GET and SET.
+metakv uses GitHub issues on the metakv project itself as its data store / backend.
 
 Keys and values are base32
 encoded and stored in GitHub issues (filed by you via OAuth) as issue titles and bodies,
 respectively. Each user receives their own key space; issues are filed
 and filtered by their username. They look like this: https://github.com/mrooney/metakv/issues
+
 
 api
 ===
