@@ -28,9 +28,10 @@ why?
 ====
 
 metakv was inspired by [@chino](https://github.com/chino), who first planted the idea of using
-social data (tweets, facebook comments) outside of its original intent, and specifically as a place
+social data (tweets, facebook comments) outside of their original intent, and specifically as a place
 to dump and retrieve raw encoded data. I loved the idea of a project
-that could store its own data as metadata on the project itself. Hence,
+that could store its own data as metadata on the project itself, for
+free. Hence,
 metakv was born.
 
 what's next?
