@@ -13,7 +13,7 @@ metakv uses GitHub issues on the metakv project itself as its data store / backe
 Keys and values are base32
 encoded and stored in GitHub issues (filed by you via OAuth) as issue titles and bodies,
 respectively. Each user receives their own key space; issues are filed
-and filtered by their username. They look like this: https://github.com/mrooney/metakv/issues
+and filtered by their username. They look like this: https://github.com/mrooney/metakv/issues. As you can see, keys and values are public.
 
 
 api
