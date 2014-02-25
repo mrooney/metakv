@@ -200,7 +200,7 @@ CACHES = {
 }
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '3@#3qq7os&w(!!m70%kg@cok_dcr5d3=+$ys2!7iuuqcjre@0j'
+SECRET_KEY = open(os.path.join(WEBSITE_DIR, 'django.secret')).read().strip()
 
 JINJA2_EXTENSIONS = [
     'compressor.contrib.jinja2ext.CompressorExtension',
