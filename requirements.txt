@@ -13,8 +13,7 @@ django_compressor
 gunicorn
 jinja2
 lxml
-pbdeploy==1.7
-psutil
+pbdeploy==1.8
 python-cjson
 python-memcached
 raven
