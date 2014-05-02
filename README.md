@@ -16,7 +16,7 @@ respectively. Each user receives their own key space; issues are filed
 and filtered by their username. They look like this: https://github.com/mrooney/metakv/issues. As you can see, keys and values are public.
 
 
-api
+API
 ===
 once you [obtain an access token](http://www.metakv.com), you'll be able
 to:
